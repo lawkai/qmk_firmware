@@ -29,6 +29,7 @@ enum custom_macro {
 #define KC_ALT1 LM(1, KC_LALT)
 #define KC_ALT1 LM(1, KC_LALT)
 #define KC_GUI1 LM(1, KC_LGUI)
+#define KC_QUT1 LT(1, KC_QUOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -43,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         KC_SPC, KC_ENT, MO(1),                    
                KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
                KC_DOWN, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUT1,
                KC_RGHT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
                                  KC_RALT, KC_ALT1, KC_GUI1, KC_CTL1,  KC_RCTL,
                                           KC_HOME, KC_END,
@@ -60,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______,
                         _______, _______, _______,
                KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
-               _______, _______, _______, _______, KC_LBRC, KC_RBRC, _______,
+               _______, _______, _______, KC_PSCR, KC_LBRC, KC_RBRC, _______,
                         _______, _______, _______, _______, _______, _______,
                _______, _______, _______, _______, _______, _______, _______,
                _______, _______, _______, _______, _______,
