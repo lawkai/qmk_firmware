@@ -26,6 +26,10 @@ enum custom_macro {
     EQUAL_EQUAL,
 };
 
+enum {
+    TD_QUOT,
+};
+
 #define ESC_GUI LGUI_T(KC_ESC)
 #define ESC_CTL LCTL_T(KC_ESC)
 #define KC_CTL1 LM(1, KC_LCTL)
@@ -39,8 +43,10 @@ enum custom_macro {
 #define KC_ENT1 LT(1, KC_ENT)
 #define KC_BSP1 LT(1, KC_BSPC)
 #define KC_TAB2 LT(2, KC_TAB)
-#define KC_SPC1  LT(1, KC_SPC)
-#define KC_QUO2  LT(2, KC_QUOT)
+#define KC_SPC1 LT(1, KC_SPC)
+#define KC_QUO2 LT(2, KC_QUOT)
+#define KC_TDQT TD(TD_QUOT)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -52,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
                                  KC_PGDN, KC_PGUP,
                                           KC_INS,
-                        KC_ENT,  SPC_GUI, KC_DEL,                    
+                        KC_ENT1, KC_LGUI, KC_DEL,                    
                KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
                KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT1,
@@ -60,38 +66,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_LEAD,
                                           KC_HOME, KC_END,
                                           TG(1),
-                                          KC_PSCR, KC_QUO2, KC_SPC1),
+                                          KC_PSCR, KC_QUOT, KC_SPC1),
 
   [1] = LAYOUT_ergodox(
-               _______, _______, _______, _______, _______, _______, _______,
-               _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,
+               _______, _______, _______, _______, _______, _______, KC_UNDS,
+               _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LCBR,
                _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
                _______, _______, _______, _______, KC_F11,  KC_F12,  _______,
                _______, _______, _______, _______, _______,
                                  _______, _______,
                                           _______,
                         _______, _______, _______,
-               _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_DEL,
-               _______, _______, _______, _______, KC_LBRC, KC_RBRC, _______,
+               KC_PLUS, _______, _______, _______, _______, _______,  _______,
+               KC_RCBR, _______, _______, _______, _______, _______, _______,
                         _______, _______, _______, _______, KC_DQUO, _______,
-               _______, _______, _______, _______, _______, _______, _______,
-               _______, _______, _______, _______, _______,
-                                          _______, _______,
-                                          _______,
-                                          _______, _______, _______),
-    
-  [2] = LAYOUT_ergodox(
-               _______, _______, _______, _______, _______, _______, _______,
-               _______, _______, _______, _______, _______, _______, _______,
-               _______, _______, _______, _______, _______, _______,
-               _______, _______, _______, _______, _______, _______, _______,
-               _______, _______, _______, _______, _______,
-                                 _______, _______,
-                                          _______,
-                        _______, _______, _______,
-               _______, _______, _______, _______, KC_UNDS, KC_PLUS, _______,
-               _______, _______, _______, _______, KC_LCBR, KC_RCBR, _______,
-                        _______, _______, _______, _______, _______, _______,
                _______, _______, _______, _______, _______, _______, _______,
                _______, _______, _______, _______, _______,
                                           _______, _______,
@@ -101,6 +89,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM fn_actions[] = {
   [1] = ACTION_LAYER_TAP_TOGGLE(1)
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOTE, KC_DQUO),
 };
 
 // leaving this in place for compatibilty with old keymaps cloned and re-compiled.
