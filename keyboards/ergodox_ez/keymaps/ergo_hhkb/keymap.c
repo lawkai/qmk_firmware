@@ -7,68 +7,50 @@
 #include "wait.h"
 
 enum custom_keycodes {
-  PLACEHOLDER = SAFE_RANGE, // can always be here
-  EPRM,
-  VRSN,
-  RGB_SLD,
-  LAYER_ESC,
-};
-
-enum custom_macro {
-    DEFAULT_MACRO=0,
-    CTL_FN_LAYER,
-    ALT_FN_LAYER,
-    LESS_THAN_EQUAL,
-    GREATER_THAN_EQUAL,
-    LEFT_ARROW,
-    RIGHT_ARROW,
-    NOT_EQUAL,
-    EQUAL_EQUAL,
+    M_CENTR = SAFE_RANGE,
+    M_RIGHT,
+    M_LEFT,
+    M_BIGER,
+    M_SMLER,
+    M_FULSC,
+    M_REG1,
+    M_REG2,
+    M_GCOMM,
+    M_GSEMI,
 };
 
 enum {
     TD_QUOT,
 };
 
-#define ESC_GUI LGUI_T(KC_ESC)
 #define ESC_CTL LCTL_T(KC_ESC)
-#define KC_CTL1 LM(1, KC_LCTL)
-#define KC_ALT1 LM(1, KC_LALT)
-#define KC_ALT1 LM(1, KC_LALT)
-#define KC_GUI1 LM(1, KC_LGUI)
-#define KC_QUT1 LT(1, KC_QUOT)
-#define SPC_GUI LGUI_T(KC_SPC)
-#define ENT_GUI RGUI_T(KC_ENT)
-#define QUO_CTL RCTL_T(KC_QUOT)
-#define KC_ENT1 LT(1, KC_ENT)
-#define KC_BSP1 LT(1, KC_BSPC)
-#define KC_TAB2 LT(2, KC_TAB)
-#define KC_SPC1 LT(1, KC_SPC)
-#define KC_QUO2 LT(2, KC_QUOT)
+#define ENT_CTL LCTL_T(KC_ENT)
+#define MIN_GUI LGUI_T(KC_MINS)
+#define EQL_GUI RGUI_T(KC_EQL)
 #define KC_TDQT TD(TD_QUOT)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT_ergodox(
-               KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_MINS,
-               KC_TAB2, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_LBRC,
+               KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    M_REG1,
+               KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    M_GSEMI,
                ESC_CTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
                KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LALT,
-               KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+               OSL(1) , M_LEFT , M_CENTR, M_FULSC, M_RIGHT,
                                  KC_PGDN, KC_PGUP,
                                           KC_INS,
-                        KC_ENT1, KC_LGUI, KC_DEL,                    
-               KC_EQL,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
-               KC_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT1,
-               KC_RALT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                                 KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_LEAD,
-                                          KC_HOME, KC_END,
-                                          TG(1),
-                                          KC_PSCR, KC_QUOT, KC_SPC1),
+                        KC_ENT , MIN_GUI, KC_DEL,                    
+               M_REG2,  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSLS,
+               M_GCOMM, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+                        KC_H,    KC_J,    KC_K,    KC_L   , KC_SCLN, ENT_CTL,
+               KC_RALT, KC_N,    KC_M,    KC_COMM, KC_DOT , KC_SLSH, KC_RSFT,
+                                 KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, OSL(1) ,
+                                          KC_HOME, KC_END ,
+                                          TG(2),
+                                          KC_PSCR, EQL_GUI , KC_SPC),
 
-  [1] = LAYOUT_ergodox(
+  [2] = LAYOUT_ergodox(
                _______, _______, _______, _______, _______, _______, KC_UNDS,
                _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LCBR,
                _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
@@ -85,6 +67,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______, _______,
                                           _______,
                                           _______, _______, _______),
+
+  [1] = LAYOUT_ergodox(
+               _______, _______, _______, _______, _______, _______, _______,
+               _______, _______, _______, _______, _______, _______, _______,
+               _______, KC_QUOT, KC_LBRC, KC_LCBR, KC_LPRN, _______,
+               _______, _______, _______, _______, _______, _______, _______,
+               _______, _______, _______, _______, _______,
+                                 _______, _______,
+                                          _______,
+                        _______, _______, _______,
+               _______, _______, _______, _______, _______, _______, _______,
+               _______, _______, _______, _______, _______, _______, _______,
+                        _______, KC_RPRN, KC_RCBR, KC_RBRC, KC_DQUO, _______,
+               _______, _______, _______, _______, _______, _______, _______,
+               _______, _______, _______, _______, _______,
+                                          _______, _______,
+                                          _______,
+                                          _______, _______, _______),
 };
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -95,62 +95,83 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_QUOT] = ACTION_TAP_DANCE_DOUBLE(KC_QUOTE, KC_DQUO),
 };
 
-// leaving this in place for compatibilty with old keymaps cloned and re-compiled.
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+bool process_record_user(uint16_t keycode, keyrecord_t *record)
 {
-      switch(id) {
-        case CTL_FN_LAYER:
-        if (record->event.pressed) {
-            layer_invert(1);
-            register_mods(MOD_BIT(KC_LCTL));
-            return MACRO_NONE;
-        } else {
-            layer_invert(1);
-            unregister_mods(MOD_BIT(KC_LCTL));
-            return MACRO_NONE; 
-        }
-        case ALT_FN_LAYER:
-        if (record->event.pressed) {
-            layer_invert(1);
-            register_mods(MOD_BIT(KC_LALT));
-            return MACRO_NONE;
-        } else {
-            layer_invert(1);
-            unregister_mods(MOD_BIT(KC_LALT));
-            return MACRO_NONE; 
-        }
-        case LESS_THAN_EQUAL:
-        if (record->event.pressed) {
-            SEND_STRING("<=");
-            return false;
-        }
-        case GREATER_THAN_EQUAL:
-        if (record->event.pressed) {
-            SEND_STRING(">=");
-            return false;
-        }
-        case LEFT_ARROW:
-        if (record->event.pressed) {
-            SEND_STRING("<-");
-            return false;
-        }
-        case RIGHT_ARROW:
-        if (record->event.pressed) {
-            SEND_STRING("->");
-            return false;
-        }
-        case NOT_EQUAL:
-        if (record->event.pressed) {
-            SEND_STRING("!=");
-            return false;
-        }
-        case EQUAL_EQUAL:
-        if (record->event.pressed) {
-            SEND_STRING("==");
-            return false;
-        }
-      }
-    return MACRO_NONE;
+  switch(keycode) {
+    // case CTL_FN_LAYER:
+    // if (record->event.pressed) {
+    //    layer_invert(1);
+    //    register_mods(MOD_BIT(KC_LCTL));
+    //    return MACRO_NONE;
+    // } else {
+    //    layer_invert(1);
+    //    unregister_mods(MOD_BIT(KC_LCTL));
+    //    return MACRO_NONE; 
+    //}
+    case M_CENTR:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_LGUI(SS_TAP(X_C))));
+        return false;   
+      } 
+      break;
+    case M_RIGHT:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_LGUI(SS_TAP(X_RIGHT))));
+        return false;
+      } 
+      break;
+    case M_LEFT:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_LGUI(SS_TAP(X_LEFT))));
+        return false;
+      } 
+      break;
+    case M_BIGER:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_LCTRL(SS_LSFT(SS_TAP(X_RIGHT)))));
+        return false;
+      } 
+      break;
+    case M_SMLER:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_LCTRL(SS_LSFT(SS_TAP(X_LEFT)))));
+        return false;
+      } 
+      break;
+    case M_FULSC:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LCTRL(SS_LGUI(SS_TAP(X_F))));
+        return false;
+      } 
+      break;
+    case M_REG1:
+      if (record->event.pressed) {
+        SEND_STRING("\"b");
+        return false;
+      } 
+      break;
+    case M_REG2:
+      if (record->event.pressed) {
+        SEND_STRING("\"*");
+        return false;
+      } 
+      break;
+    case M_GCOMM:
+      if (record->event.pressed) {
+        SEND_STRING("g,");
+        return false;
+      } 
+      break;
+    case M_GSEMI:
+      if (record->event.pressed) {
+        SEND_STRING("g;");
+        return false;
+        // this is a test
+        //
+      } 
+      break;
+  }
+  return true;
 };
 
 void matrix_scan_user(void) {
